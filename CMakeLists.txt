@@ -12,3 +12,5 @@ set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 add_library(mongoose SHARED mongoose.c)
 
 target_link_libraries(mongoose ${OPENSSL_LIBRARIES})
+
+install(TARGETS mongoose DESTINATION ${CMAKE_INSTALL_PREFIX})
