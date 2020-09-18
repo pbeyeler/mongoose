@@ -16,5 +16,5 @@ set_target_properties(mongoose PROPERTIES PUBLIC_HEADER mongoose.h)
 
 install(TARGETS mongoose
         LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include/mongoose
 )
