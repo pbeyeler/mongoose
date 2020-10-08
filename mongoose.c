@@ -1453,7 +1453,6 @@ void mbuf_free(struct mbuf *mbuf) WEAK;
 void mbuf_free(struct mbuf *mbuf) {
   if(mbuf) {
     mbuf_destroy_mutex(mbuf);
-    mbuf->mutex = NULL;
     if (mbuf->buf != NULL) {
       MBUF_FREE(mbuf->buf);
       mbuf_init(mbuf, 0);
