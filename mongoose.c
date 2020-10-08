@@ -1451,10 +1451,13 @@ void mbuf_init(struct mbuf *mbuf, size_t initial_size) {
 
 void mbuf_free(struct mbuf *mbuf) WEAK;
 void mbuf_free(struct mbuf *mbuf) {
-  if (mbuf->buf != NULL) {
-    MBUF_FREE(mbuf->buf);
+  if(mbuf) {
     mbuf_destroy_mutex(mbuf);
-    mbuf_init(mbuf, 0);
+    mbuf->mutex = NULL;
+    if (mbuf->buf != NULL) {
+      MBUF_FREE(mbuf->buf);
+      mbuf_init(mbuf, 0);
+    }
   }
 }
 
