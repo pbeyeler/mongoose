@@ -2059,7 +2059,14 @@ struct mbuf {
   char *buf;   /* Buffer pointer */
   size_t len;  /* Data length. Data is located between offset 0 and len. */
   size_t size; /* Buffer size allocated by realloc(1). Must be >= len */
+  pthread_mutex_t *mutex; /* Mutex to lock the Mbuf for thread-safety */
 };
+
+/* Creates a mutex for an Mbuf. */
+void mbuf_create_mutex(struct mbuf *);
+
+/* Destroys the mutex of an Mbuf. */
+void mbuf_destroy_mutex(struct mbuf *);
 
 /*
  * Initialises an Mbuf.
