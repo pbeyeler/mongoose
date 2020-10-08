@@ -1423,6 +1423,7 @@ void mbuf_create_mutex(struct mbuf *mbuf) WEAK;
 void mbuf_create_mutex(struct mbuf *mbuf) {
   mbuf->mutex = MBUF_CALLOC(1, sizeof(pthread_mutex_t));
   pthread_mutexattr_t mutex_attr;
+  pthread_mutexattr_init(&mutex_attr);
   pthread_mutexattr_settype(&mutex_attr, PTHREAD_MUTEX_RECURSIVE);
   pthread_mutex_init(mbuf->mutex, &mutex_attr);
   pthread_mutexattr_destroy(&mutex_attr);
