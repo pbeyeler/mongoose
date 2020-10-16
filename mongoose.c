@@ -1445,8 +1445,8 @@ void mbuf_init(struct mbuf *mbuf, size_t initial_size) WEAK;
 void mbuf_init(struct mbuf *mbuf, size_t initial_size) {
   mbuf->len = mbuf->size = 0;
   mbuf->buf = NULL;
-  mbuf_resize(mbuf, initial_size);
   mbuf->mutex = NULL;
+  mbuf_resize(mbuf, initial_size);
 }
 
 void mbuf_free(struct mbuf *mbuf) WEAK;
